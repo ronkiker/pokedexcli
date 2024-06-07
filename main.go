@@ -1,6 +1,10 @@
 package main
 
-import "github.com/ronkiker/pokedexcli/internal/pokeapi"
+import (
+	"time"
+
+	"github.com/ronkiker/pokedexcli/internal/pokeapi"
+)
 
 // holds stateful data for command functions
 type config struct {
@@ -11,7 +15,7 @@ type config struct {
 
 func main() {
 	cfg := config{
-		pokeapiClient: pokeapi.NewClient(),
+		pokeapiClient: pokeapi.NewClient(time.Hour),
 	}
 	startRepl(&cfg)
 }
