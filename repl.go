@@ -16,6 +16,7 @@ func startRepl(cfg *config) {
 		text := scanner.Text()
 
 		cleaned := cleanInput(text)
+
 		if len(cleaned) == 0 {
 			continue
 		}
@@ -64,10 +65,20 @@ func getCommands() map[string]cliCommand {
 			description: "Lists previous page of location areas",
 			callback:    callbackMapB,
 		},
-		"catch": {
-			name:        "catch {location_area}",
+		"explore": {
+			name:        "explore {location_area}",
 			description: "Lists the pokemon within a location area",
+			callback:    callbackExplore,
+		},
+		"catch": {
+			name:        "catch {pokemon_name}",
+			description: "Catches found pokemon in location area",
 			callback:    callbackCatch,
+		},
+		"inspect": {
+			name:        "inspect {pokemon_name}",
+			description: "Inspect caught pokemon in location area",
+			callback:    callbackInspect,
 		},
 		"exit": {
 			name:        "exit",
